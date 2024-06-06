@@ -1,0 +1,27 @@
+1,Sunshine Meadow
+You are standing in a beautiful meadow full of colorful flowers and fluttering butterflies. The sun is shining brightly, and the air smells like sweet roses.
+EAST,2
+
+2,Magic Forest
+You have entered a magical forest with tall, sparkling trees. You hear the giggles of fairies hidden among the leaves and see glowing flowers lighting up the path.
+WEST,1
+NORTH,3
+
+3,Unicorn Lake
+You are by a serene lake with crystal-clear water. A friendly unicorn is drinking from the lake, and there's a rainbow arching across the sky.
+SOUTH,2
+EAST,4
+
+4,Candy Castle
+You have arrived at a castle made entirely of candy. The walls are made of gingerbread, and the windows are sugar glass. A sweet scent of chocolate fills the air.
+WEST,3
+NORTH,5
+
+5,Princess Tower
+You are at the top of a tower where a princess is waiting to greet you. The room is decorated with plush pillows and twinkling fairy lights.
+SOUTH,4
+DOWN,6
+
+6,Secret Garden
+You are in a hidden garden full of magical plants and adorable creatures. A fairy waves at you, inviting you to explore further.
+UP,5
