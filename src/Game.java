@@ -6,20 +6,28 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 
 /**
- * Class Name: Game
- * Author: Matilda Vazquez-Guzman
+ * Class: Game
+ * @author Matilda Vazquez-Guzman
+ * @version 1.1
  * Course: ITEC 3860 Summer 2024
- * Written: June 5, 2024
+ * Written: June 17, 2024
+ * This class is a game where the player navigates through different rooms.
  */
 
 class Room
 {
-    private int id;
-    private String name;
-    private String description;
-    private boolean visited;
-    private Map<String, Integer> exits;
+    private int id; // Room ID
+    private String name; // Room Name
+    private String description; // Room Description
+    private boolean visited; // Whether the room has been visited
+    private Map<String, Integer> exits; // Exits from the room
 
+    /**
+     * Room Constructor
+     * @param id - The ID of the room
+     * @param name - the name of the room
+     * @param description - the description of the room
+     */
     public Room(int id, String name, String description)
     {
         this.id = id;
@@ -29,53 +37,88 @@ class Room
         this.exits = new HashMap<>();
     }
 
+    /**
+     * Adds an exit to the room
+     * @param direction - of the exit
+     * @param roomId - the ID of the room that the exit leads to
+     */
     public void addExit(String direction, int roomId)
     {
         exits.put(direction, roomId);
     }
 
+    /**
+     * @return the ID of the room
+     */
     public int getId()
     {
         return id;
     }
 
+    /**
+     * @return the name of the room
+     */
     public String getName()
     {
         return name;
     }
 
+    /**
+     * @return the description of the room
+     */
     public String getDescription()
     {
         return description;
     }
 
+    /**
+     * @return whether the room has been visited
+     */
     public boolean isVisited()
     {
         return visited;
     }
 
+    /**
+     * Sets the visited status of the room
+     * @param visited the new visited status
+     */
     public void setVisited(boolean visited)
     {
         this.visited = visited;
     }
 
+    /**
+     * @return the exits of the room
+     */
     public Map<String, Integer> getExits()
     {
         return exits;
     }
 }
 
+/**
+ * Main Game Class
+ */
 public class Game
 {
     private static Map<Integer, Room> rooms = new HashMap<>();
     private static Room currentRoom;
 
+    /**
+     * Main method to start the game
+     * @param args
+     */
     public static void main(String[] args)
     {
         loadRooms("Rooms.txt");
         playGame();
     }
 
+    /**
+     * Method to load rooms from the Rooms.txt file
+     * @param filename
+     */
     private static void loadRooms(String filename)
     {
         try (BufferedReader br = new BufferedReader(new FileReader(filename)))
@@ -113,11 +156,19 @@ public class Game
         }
     }
 
+    /**
+     * Method to check if a line represents an exit
+     * @param line
+     * @return true if the line is an exit line, false otherwise
+     */
     private static boolean isExitLine(String line)
     {
         return line.startsWith("EAST") || line.startsWith("WEST") || line.startsWith("NORTH") || line.startsWith("SOUTH") || line.startsWith("UP") || line.startsWith("DOWN");
     }
 
+    /**
+     * Method to play the game
+     */
     private static void playGame()
     {
         System.out.println("Welcome to my game. You will proceed through rooms based upon your entries.");
@@ -127,6 +178,7 @@ public class Game
         Scanner scanner = new Scanner(System.in);
         while (true)
         {
+            // Display current room's name and visit status
             System.out.println(currentRoom.getName() + (currentRoom.isVisited() ? " (Visited)" : " (Not Visited)"));
             System.out.println(currentRoom.getDescription());
             System.out.print("Exits: ");
@@ -135,7 +187,7 @@ public class Game
             System.out.print("What would you like to do? ");
             String command = scanner.nextLine().trim().toUpperCase();
 
-            if (command.equals("X"))
+            if (command.equals("X")) // Exit the game
             {
                 System.out.println("Thank you for playing.");
                 break;
